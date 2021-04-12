@@ -27,21 +27,6 @@ namespace appspbox.Controllers
         {
             return await _context.OrderDetail.ToListAsync();
         }
-
-        // GET: api/OrderDetails1/5
-        /*[HttpGet("{id}")]
-         public async Task<ActionResult<OrderDetail>> GetOrderDetail(int id)
-         {
-             var orderDetail = await _context.OrderDetail.FindAsync(id);
-
-             if (orderDetail == null)
-             {
-                 return NotFound();
-             }
-
-             return orderDetail;
-         }*/
-
         [HttpGet("{id}")]
         public async Task<ActionResult<OrderDetail>> GetOrderDetail(int id)
         {
@@ -50,21 +35,16 @@ namespace appspbox.Controllers
             var orderDetail = from orderdetail in _context.Set<OrderDetail>().Where(orderdetail => orderdetail.orderId == id)
                         join  orders in _context.Set<Orders>()
                             on orderdetail.orderId equals orders.orderId
-                            join product in _context.Set<Product>()
+                        join product in _context.Set<Product>()
                             on orderdetail.productId equals product.productId
-                            join provider in _context.Set<Provider>()
-                            on orders.providerId equals provider.providerId
-                        
-                        select new { orders.Fecha, product.name , provider.direction};
+                        join provider in _context.Set<Provider>()
+                            on orders.providerId equals provider.providerId            
+                        select new { orders.Fecha, product.name , provider.providerName };
 
-            return Ok(orderDetail); 
+            return  Ok(orderDetail); 
         }
 
 
-
-
-        // PUT: api/OrderDetails1/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrderDetail(int id, OrderDetail orderDetail)
         {

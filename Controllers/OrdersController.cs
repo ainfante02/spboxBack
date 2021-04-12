@@ -26,7 +26,17 @@ namespace appspbox.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Orders>>> GetOrders()
         {
-            return await _context.Orders.ToListAsync();
+
+            var order = from orders in _context.Set<Orders>()
+                              
+                              join provider in _context.Set<Provider>()
+
+                              on orders.providerId equals provider.providerId
+
+                              select new { orders.orderId, provider.providerName, orders.Fecha };
+
+            return Ok(order);
+          
         }
 
         // GET: api/Orders/5

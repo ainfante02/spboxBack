@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using appspbox.context;
 
 namespace appspbox.Migrations
 {
     [DbContext(typeof(productDbContext))]
-    partial class productDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210412064809_Context Posdbsss")]
+    partial class ContextPosdbsss
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
