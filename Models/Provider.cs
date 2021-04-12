@@ -13,8 +13,8 @@ namespace appspbox.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int providerId { get; set; }
         public string name { get; set; }
-        public string description { get; set; }
         public string direction { get; set; }
         public int phone { get; set; }
+
     }
 }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using appspbox.Models;
 using appspbox.context;
 
+
 namespace appspbox.Controllers
 {
     [Route("api/[controller]")]
@@ -32,6 +33,7 @@ namespace appspbox.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Orders>> GetOrders(int id)
         {
+
             var orders = await _context.Orders.FindAsync(id);
 
             if (orders == null)
@@ -47,7 +49,7 @@ namespace appspbox.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutOrders(int id, Orders orders)
         {
-            if (id != orders.orderrId)
+            if (id != orders.orderId)
             {
                 return BadRequest();
             }
@@ -81,7 +83,7 @@ namespace appspbox.Controllers
             _context.Orders.Add(orders);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetOrders", new { id = orders.orderrId }, orders);
+            return CreatedAtAction("GetOrders", new { id = orders.orderId }, orders);
         }
 
         // DELETE: api/Orders/5
@@ -102,7 +104,7 @@ namespace appspbox.Controllers
 
         private bool OrdersExists(int id)
         {
-            return _context.Orders.Any(e => e.orderrId == id);
+            return _context.Orders.Any(e => e.orderId == id);
         }
     }
 }

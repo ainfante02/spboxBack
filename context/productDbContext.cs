@@ -4,9 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-
-
 using appspbox.Models;
+
+
 namespace appspbox.context
 {
     public class productDbContext:DbContext
@@ -21,5 +21,8 @@ namespace appspbox.context
         public DbSet<Orders> Orders { get; set; }
         public DbSet<Provider> Provider { get; set; }
         public DbSet<Product> Product { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+ 
+       
     }
 }

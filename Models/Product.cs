@@ -14,12 +14,8 @@ namespace appspbox.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int productId { get; set; }
         public string name { get; set; }
-        public string description { get; set; }
         public int price { get; set; }
-        public int quantity { get; set; }
-        [ForeignKey("GetOrders")]
-        public int orderrId { get; set; }
-        [JsonIgnore]
-        public Orders GetOrders { get; set; }
+
+
     }
 }

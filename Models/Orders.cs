@@ -11,11 +11,11 @@ namespace appspbox.Models
     {
 
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int orderrId { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public int identity { get; set; }
-        [JsonIgnore]
-        public List<Product> GetProducts { get; set; }
+        public int orderId { get; set; }
+
+        public DateTime Fecha { get; set; }
+        [ForeignKey("GetProvider")]
+        public int providerId { get; set; }
+        
     }
 }
